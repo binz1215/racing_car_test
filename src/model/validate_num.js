@@ -1,4 +1,4 @@
-import { carArray, countNum } from '../controller/make-array';
+import { carArray, countNum } from '../controller/make-array.js';
 
 class ValidateNum {
   static MIN_NUM = 1;
@@ -23,7 +23,7 @@ class ValidateNum {
   }
 
   #validatePositive() {
-    if (this.#count < MIN_NUM) {
+    if (this.#count < ValidateNum.MIN_NUM) {
       throw Error('[ERROR] 1이상의 수만 입력 가능합니다.');
     }
   }
