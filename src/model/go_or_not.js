@@ -1,17 +1,27 @@
 //랜덤 값에 따라 전진 혹은 정지 여부를 결정
 
-import { MissionUtils } from '@woowacourse/mission-utils';
+import { MissionUtils, Console } from '@woowacourse/mission-utils';
+import { outputPrint } from '../view/output.js'; //모델이랑 직접 소통하면 안되늗데 방법이 생각이 안남.
 
 class GoOrNot {
   #name;
+  #count;
+  #result = {};
 
-  constructor(names) {
+  constructor(names, counts) {
     this.#name = names;
+    this.#count = counts;
   }
 
   oneSet() {
-    const result = this.#drive();
-    return result;
+    this.#makeObject();
+    for (let i = 0; i < this.#count; i++) {
+      const oneSet = this.#drive();
+      outputPrint(oneSet);
+      Console.print('\n');
+    }
+
+    return this.#result;
   }
 
   #makeRandom() {
@@ -31,21 +41,30 @@ class GoOrNot {
     return marker;
   }
 
-  #drive() {
-    const result = {};
-    let value = '';
-    this.#name.forEach((name, index) => {
+  #makeObject() {
+    this.#name.forEach((name) => {
       const key = name;
-      value += this.#go();
+      const value = '';
 
-      result[key] = value;
+      this.#result[key] = value;
     });
 
-    return result;
+    return this.#result;
+  }
+
+  #drive() {
+    this.#name.forEach((name) => {
+      this.#result[name] += this.#go();
+    });
+
+    return this.#result;
   }
 
   getNames() {
     return this.#name;
+  }
+  getCounts() {
+    return this.#count;
   }
 }
 
