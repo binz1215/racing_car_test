@@ -1,6 +1,6 @@
 import { carArray, countNum } from '../controller/make-array';
 
-class Validate {
+class ValidateCar {
   static MAX_LENGTH = 5;
   static MIN_LENGTH = 1;
 
@@ -31,4 +31,4 @@ class Validate {
     return this.#carName;
   }
 }
-export default Validate;
+export default ValidateCar;
