@@ -29,7 +29,7 @@ class ValidateNum {
   }
 
   #validateIsInteger() {
-    if (Number.isInteger(this.#count)) {
+    if (!Number.isInteger(this.#count)) {
       throw Error('[ERROR] 정수만 입력 가능합니다.');
     }
   }
