@@ -18,20 +18,20 @@ class ValidateNum {
 
   #validateIsNum() {
     if (Number.isNaN(this.#count)) {
-      return false;
+      throw Error('[ERROR] 숫자만 입력 가능합니다.');
     }
-    return true;
   }
 
   #validatePositive() {
     if (this.#count < MIN_NUM) {
-      return false;
+      throw Error('[ERROR] 1이상의 수만 입력 가능합니다.');
     }
-    return true;
   }
 
   #validateIsInteger() {
-    return Number.isInteger(this.#count);
+    if (Number.isInteger(this.#count)) {
+      throw Error('[ERROR] 정수만 입력 가능합니다.');
+    }
   }
 
   getCounts() {
